@@ -152,7 +152,8 @@ const FirstQuter=(props)=>{
                          {/* {(name === name3 || name === name3 || name2 === name3 || name== name2 || name=== name4) && <label style={{color:"red"}}>This User already Exits</label>} */}
                          
                          
-                         {name === name3   &&<label style={{color:"red"}}>This User already Exits</label>}
+                         {name === name3 && <label style={{color:"red"}}>This User already Exits</label>}
+                         {name2 === name3 && <label style={{color:"red"}}>This User already Exits</label>}
                           {/* <div>
                          <select type='text' name='position' onChange={InputEvent5}  placeholder='Select Position'>
                          <option>Select Position</option>
