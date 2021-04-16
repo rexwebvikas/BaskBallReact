@@ -127,11 +127,12 @@ const ComposeTeam = (props) =>{
      const[show2,setShow2] = useState(false);
      const [show3,setShow3] =useState(false);
      const [show4,setShow4] = useState(false)
+     
     const handleChange = (e) =>{
         const {value, name} = e.target;
         props.setData({...props.data, [name] : value})
         console.log("Data",props.data)
-        // setErrors(Validation(props))
+          //setErrors(Validation(props))
         // if(e.target.name=== "fname" && e.target.value =="")
         // {
         //     setShow(true)
@@ -168,7 +169,7 @@ const ComposeTeam = (props) =>{
     const handleSubmit = (e) =>{
         e.preventDefault();
     
-         setErrors(Validation(props))
+           setErrors(Validation(props))
          
        props.setData({fname:"",lname:"",height:"",position:""});
         console.log("form submitted",props.Playerdata)
@@ -176,6 +177,9 @@ const ComposeTeam = (props) =>{
         if(props.data.fname !=="" && props.data.lname !=="" &&  props.data.height !=="" && props.data.position !==""){
             props.Playerdata.push(props.data)
         }
+
+      
+        
         
     }
 
@@ -191,7 +195,17 @@ const ComposeTeam = (props) =>{
              else{
                  setShow4(false)
              }
+         
 
+        
+
+    }
+
+    const NextButton =()=>{
+     
+     props.setShow(1)
+     
+        // props.data.fname && props.data.lname && props.data.height && props.data.position && props.setShow(1);
     }
     return(
         <>
@@ -203,7 +217,7 @@ const ComposeTeam = (props) =>{
                       value={props.data.fname}
                        onChange={handleChange}/>
                        <br></br>
-                       {show &&<label style={{color:"red"}}>This field is required</label>}
+                        {show &&<label style={{color:"red"}}>This field is required</label>} 
                        <br></br>
                       {errors.fname && <p style={{color:"red"}} className="error">{errors.fname}</p>} 
                     <input type ="text"
@@ -212,17 +226,19 @@ const ComposeTeam = (props) =>{
                        value={props.data.lname}
                        onChange={handleChange} />
                        <br></br>
-                       {show1 &&<label style={{color:"red"}}>This field is required</label>}
+                       {show1 &&<label style={{color:"red"}}>This field is required</label>} 
                        <br></br>
                         {errors.lname && <p style={{color:"red"}} className="error">{errors.lname}</p>} 
 
                     <input type ="text"
                      name="height"
                       placeholder="height" 
+                      maxLength={9}
+                      pattern="[+-]?\d+(?:[.,]\d+)?"
                       value={props.data.height} 
                       onChange={handleChange}/>
                       <br></br>
-                      {show2 &&<label style={{color:"red"}}>This field is required</label>}
+                       {show2 &&<label style={{color:"red"}}>This field is required</label>} 
                       <br></br>
                        {errors.height && <p style={{color:"red"}} className="error">{errors.height}</p>} 
 
@@ -239,7 +255,7 @@ const ComposeTeam = (props) =>{
                         <option value="Center">Center(C)</option>
                     </select>
                     <br></br>
-                    {show3 &&<label style={{color:"red"}}>This field is required</label>}
+                     {show3 &&<label style={{color:"red"}}>This field is required</label>} 
                    
                     {errors.position && <p style={{color:"red"}} className="error">{errors.position}</p>} 
                     {/* <button type="submit" className= "button" onClick={(e)=>SaveClick(e)}>Save</button> */}
@@ -250,7 +266,7 @@ const ComposeTeam = (props) =>{
                     <Button variant="contained" color="primary" type="submit" onClick={(e)=>SaveClick(e)}>
                      Save
                     </Button>
-                    <Button variant="contained" ml= {2} color="secondary" type="button" onClick={()=>props.setShow(1)}>NEXT</Button>
+                    <Button variant="contained" ml= {2} color="secondary" type="button" onClick={()=>NextButton()}>NEXT</Button>
                     {/* <button type="button" className="button1" onClick={()=>props.setShow(1)}>Next</button> */}
                 </form>
             </div>

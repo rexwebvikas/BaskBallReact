@@ -4,15 +4,29 @@ export default function Validation(props){
     if(!props.data.fname){
         errors.fname="Name is Required."
     }
+    else{
+        errors.fname=""
+    }
     if(!props.data.lname){
         errors.lname="LastName is Required."
     }
+    else{
+        errors.lanme=""
+    }
+    
     if(!props.data.height){
         errors.height="Enter the height"
     }
-    if(!props.data.position){
+    else{
+        errors.height=""
+    }
+    if(!props.data.position=="default"){
 
         errors.position ="Enetr the Player Position"
+    }
+    else{
+
+        errors.position=""
     }
     return errors;
 }
